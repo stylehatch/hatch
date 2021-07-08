@@ -4,4 +4,4 @@ const sum = (a, b) => {
 const prod = (a, b) => {
   return a * b;
 };
-export { sum, prod };
+export {sum, prod};
