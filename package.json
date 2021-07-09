@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "clean": "rimraf dist && mkdir dist",
-    "dev": "npm run clean && npm-run-all --parallel dev:*",
+    "dev": "npm run clean && npm run build && npm-run-all --parallel dev:*",
     "dev:rollup": "NODE_ENV=development rollup -c --watch",
     "dev:postcss": "NODE_ENV=development TAILWIND_MODE=watch postcss src/styles/{theme.css,sections/*.css} --dir dist/assets --watch",
     "dev:shopify": "cd ./dist && shopify theme serve",
