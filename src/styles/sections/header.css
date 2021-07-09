@@ -1,0 +1,3 @@
+.header__test {
+  @apply border-purple-600 border-8;
+}

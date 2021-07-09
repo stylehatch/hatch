@@ -1,0 +1,3 @@
+.image-banner__test {
+  @apply border-green-600 border-8;
+}

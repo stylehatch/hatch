@@ -2,15 +2,14 @@ import path from 'path';
 import babel from '@rollup/plugin-babel';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-import copy from 'rollup-plugin-copy';
+import copy from '@jonathanmoore/rollup-plugin-copy';
 import multiInput from 'rollup-plugin-multi-input';
-// import copy from 'rollup-plugin-copy-watch';
 
 export default {
   // Import multiples
   input: ['src/scripts/theme.js', 'src/scripts/sections/*.js'],
   output: {
-    format: 'es',
+    format: 'esm',
     dir: 'dist',
   },
   plugins: [
@@ -19,7 +18,15 @@ export default {
       transformOutputPath: (output, input) => `assets/${path.basename(output)}`,
     }),
     copy({
-      watch: ['src/assets/', 'src/config/', 'src/layout/', 'src/locales', 'src/sections/', 'src/snippets/', 'src/templates/'],
+      watch: process.env.NODE_ENV === 'development' ? [
+        'src/assets/',
+        'src/config/',
+        'src/layout/',
+        'src/locales',
+        'src/sections/',
+        'src/snippets/',
+        'src/templates/',
+      ] : null,
       targets: [
         {src: 'src/assets/**/*', dest: 'dist/assets'},
         {src: 'src/config/*.json', dest: 'dist/config'},

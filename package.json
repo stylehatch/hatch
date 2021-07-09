@@ -4,19 +4,31 @@
   "main": "index.js",
   "author": "Jonathan Moore <jonathan@stylehatch.com>",
   "license": "MIT",
-  "type": "module",
   "browserslist": [
     "last 2 Chrome versions"
   ],
   "scripts": {
-    "dev": "npm-run-all --parallel dev:*",
-    "dev:rollup": "rollup -c --watch",
+    "clean": "rimraf dist && mkdir dist",
+    "dev": "npm run clean && npm-run-all --parallel dev:*",
+    "dev:rollup": "NODE_ENV=development rollup -c --watch",
+    "dev:postcss": "NODE_ENV=development TAILWIND_MODE=watch postcss src/styles/{theme.css,sections/*.css} --dir dist/assets --watch",
     "dev:shopify": "cd ./dist && shopify theme serve",
-    "dev:echo": "echo hello world"
+    "build": "npm-run-all --sequential build:*",
+    "build:rollup": "NODE_ENV=production rollup -c",
+    "build:postcss": "NODE_ENV=production postcss src/styles/{theme.css,sections/*.css} --dir dist/assets",
+    "deploy": "npm-run-all --sequential deploy:*",
+    "deploy:build": "npm-run-all --sequential build:*",
+    "deploy:shopify": "cd ./dist && shopify theme push --development",
+    "package": "npm-run-all --sequential package:*",
+    "package:build": "npm-run-all --sequential build:*",
+    "package:shopify": "cd ./dist && shopify theme package",
+    "package:copy": "mkdir -p build && cpy 'dist/*.zip' build"
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",
     "@babel/preset-env": "^7.14.7",
+    "@jonathanmoore/rollup-plugin-copy": "^3.5.1",
+    "@rollup/plugin-babel": "^5.3.0",
     "@rollup/plugin-commonjs": "^19.0.0",
     "@rollup/plugin-eslint": "^8.0.1",
     "@rollup/plugin-node-resolve": "^13.0.0",
@@ -24,21 +36,24 @@
     "@shopify/stylelint-plugin": "^10.1.2",
     "chokidar": "^3.5.2",
     "colorette": "^1.2.2",
+    "cpy-cli": "^3.1.1",
     "eslint": "^7.29.0",
     "fs-extra": "^10.0.0",
     "globby": "^11.0.4",
     "is-plain-object": "^5.0.0",
     "npm-run-all": "^4.1.5",
+    "postcss": "^8.3.5",
+    "postcss-cli": "^8.3.1",
+    "postcss-import": "^14.0.2",
+    "postcss-nested": "^5.0.5",
     "prettier": "^2.3.2",
     "rollup": "^2.52.4",
-    "stylelint": "^13.13.1"
+    "rollup-plugin-multi-input": "^1.3.1",
+    "stylelint": "^13.13.1",
+    "tailwindcss": "^2.2.4"
   },
   "dependencies": {
-    "@alumna/reflect": "^1.0.5",
-    "@rollup/plugin-babel": "^5.3.0",
-    "canvas-confetti": "^1.4.0",
-    "copy-and-watch": "^0.1.5",
-    "rollup-plugin-multi-input": "^1.3.1"
+    "canvas-confetti": "^1.4.0"
   },
   "stylelint": {
     "extends": [

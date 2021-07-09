@@ -1,3 +1,11 @@
+{%- comment -%}
+  Stylesheet and JS created by Tailwinds/Rollupjs
+{%- endcomment -%}
+<link rel="stylesheet" href="{{ 'header.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'header.css' | asset_url | stylesheet_tag }}</noscript>
+<script src="{{ 'header.js' | asset_url }}" defer="defer"></script>
+
+
 <link rel="stylesheet" href="{{ 'component-list-menu.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-search.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-menu-drawer.css' | asset_url }}" media="print" onload="this.media='all'">
@@ -62,6 +70,8 @@
 
 <script src="{{ 'details-disclosure.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'details-modal.js' | asset_url }}" defer="defer"></script>
+
+<div class="header__test">Styled by styles/sections/header.css</div>
 
 <svg xmlns="http://www.w3.org/2000/svg" class="hidden">
   <symbol id="icon-search" viewbox="0 0 18 19" fill="none">

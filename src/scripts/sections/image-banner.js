@@ -1,0 +1,1 @@
+console.log('section - scripts/sections/image-banner.js');

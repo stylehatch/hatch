@@ -1,3 +1,10 @@
+{%- comment -%}
+  Stylesheet and JS created by Tailwinds/Rollupjs
+{%- endcomment -%}
+<link rel="stylesheet" href="{{ 'image-banner.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'image-banner.css' | asset_url | stylesheet_tag }}</noscript>
+<script src="{{ 'image-banner.js' | asset_url }}" defer="defer"></script>
+
 {{ 'section-image-banner.css' | asset_url | stylesheet_tag }}
 
 {%- if section.settings.adapt_height_first_image and section.settings.image != blank -%}
@@ -9,7 +16,7 @@
     }
   {%- endstyle -%}
 {%- endif -%}
-
+<div class="image-banner__test">Styled by styles/sections/image-banner.css</div>
 <div id="Banner-{{ section.id }}" class="banner{% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank%} banner--stacked{% endif %}{% if section.settings.adapt_height_first_image and section.settings.image != blank %} banner--adapt{% endif %}">
   {%- if section.settings.image != blank -%}
     <div class="banner__media media{% if section.settings.image == blank and section.settings.image_2 == blank %} placeholder{% endif %}{% if section.settings.image_2 != blank %} banner__media-half{% endif %}">

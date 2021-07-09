@@ -1,0 +1,10 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@import './utils/base.css';
+@import './utils/autocomplete.css';
+
+.theme__test {
+  @apply border-red-600 border-8;
+}
