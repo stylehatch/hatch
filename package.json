@@ -1,8 +1,12 @@
 {
-  "name": "dawn-vanilla",
+  "name": "hatch",
+  "description": "Minimal Shopify OS2 theme build tools using Shopify CLI, Rollupjs and Tailwinds/Postcss",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "Jonathan Moore <jonathan@stylehatch.com>",
+  "author": {
+    "name": "Jonathan Moore",
+    "url": "https://github.com/jonathanmoore/"
+  },
   "license": "MIT",
   "browserslist": [
     "last 2 Chrome versions"
