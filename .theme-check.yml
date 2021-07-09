@@ -1,0 +1,4 @@
+# If your theme is not using the supported directory structure, provide the root path
+# where to find the `templates/`, `sections/`, `snippets/` directories as they would
+# be uploaded to Shopify.
+root: src
